@@ -58,3 +58,5 @@ PriorityQueue.prototype.changePriority = function(value, newPriority) {
 		if (foundItem) return false;
 	});
 };
+
+module.exports = { PriorityQueue };
