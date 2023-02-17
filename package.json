@@ -1,0 +1,19 @@
+{
+  "name": "priority-queue",
+  "version": "1.0.0",
+  "description": "Store and manipulate lists of arbitrary items using accompanying numerical priority levels",
+  "main": "priority-queue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/6570bfd7333f867664d1f71bad6e93b9.git"
+  },
+  "author": "jm-janzen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/6570bfd7333f867664d1f71bad6e93b9"
+  },
+  "homepage": "https://gist.github.com/6570bfd7333f867664d1f71bad6e93b9"
+}

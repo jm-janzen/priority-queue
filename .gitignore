@@ -1,0 +1,5 @@
+# Third party libraries
+node_modules/*
+
+# Vim swap files ;D
+*.sw[a-p]
