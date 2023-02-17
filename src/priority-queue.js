@@ -19,19 +19,19 @@ function PriorityQueue(size) {
 
 	// returns the oldest-added value with the highest priority
 	this.Pop = function() {
-		maxKey = Math.max(Object.keys(this.store));
+		const maxKey = Math.max(Object.keys(this.store));
 		this.count--;
 		return this.store[maxKey].shift();
 	};
 
 	this.length = function() {
 		return this.count;
-	}
+	};
 }
 
 PriorityQueue.prototype.get_all_priorities = function() {
 	return Object.keys(this.store);
-}
+};
 
 // iterates through all the queue elements in priority-then-FIFO order
 PriorityQueue.prototype.forEach = function(callback) {
@@ -41,7 +41,7 @@ PriorityQueue.prototype.forEach = function(callback) {
 		for (var b = 0; b < this.store[a].length; b++)
 			callback(this.store[a][b]);
 	}
-}
+};
 
 PriorityQueue.prototype.changePriority = function(value, newPriority) {
 	var foundItem = false;
@@ -57,4 +57,4 @@ PriorityQueue.prototype.changePriority = function(value, newPriority) {
 		});
 		if (foundItem) return false;
 	});
-}
+};
