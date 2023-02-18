@@ -3,7 +3,7 @@
  * Items with a higher priority are dequeued before items with a lower priority.
  * Implemented as a hash of arrays where the hash keys are priority values.
  */
-function PriorityQueue(size) {
+function PriorityQueue() {
 	this.store = {};	// keys are priorities, values are arrays of elements
 	this.count = 0;
 
