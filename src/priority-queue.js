@@ -12,8 +12,9 @@ class PriorityQueue {
 	// adds an item
 	// priority must be an integer (higher value has higher priority)
 	add(value, priority) {
-		if (this.store[priority] == undefined)
+		if (this.store[priority] == undefined) {
 			this.store[priority] = [];
+		}
 
 		this.store[priority].push(value);
 		this.count++;
@@ -39,8 +40,9 @@ class PriorityQueue {
 		var keys = Object.keys(this.store).sort();
 
 		for (var a = keys.length; a > 0; a--) {
-			for (var b = 0; b < this.store[a].length; b++)
+			for (var b = 0; b < this.store[a].length; b++) {
 				callback(this.store[a][b]);
+			}
 		}
 	}
 
@@ -56,8 +58,9 @@ class PriorityQueue {
 					return false; // early exit from forEach
 				}
 			});
-			if (foundItem)
+			if (foundItem) {
 				return false;
+			}
 		});
 	}
 }
