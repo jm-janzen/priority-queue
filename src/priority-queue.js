@@ -1,16 +1,24 @@
 /**
- * A priority queue stores a list of items but each can have a numeric priority value.
- * Items with a higher priority are dequeued before items with a lower priority.
- * Implemented as a hash of arrays where the hash keys are priority values.
+ * Stores a list of items (arbitrary value) along with their numeric
+ * priority values. Items with higher priorities are dequeued first
  */
 class PriorityQueue {
+
+	/**
+	 * Initialises a queue with zero items
+	 */
 	constructor() {
 		this.store = {}; // keys are priorities, values are arrays of elements
 		this.count = 0;
 	}
 
-	// adds an item
-	// priority must be an integer (higher value has higher priority)
+	/**
+	 * Adds a +value+ to this queue of the given +priority+. The higher
+	 * the number given, the higher the priority.
+	 *
+	 * @param {Any} value
+	 * @param {Integer} priority
+	 */
 	add(value, priority) {
 		if (this.store[priority] == undefined) {
 			this.store[priority] = [];
@@ -20,22 +28,42 @@ class PriorityQueue {
 		this.count++;
 	}
 
-	// returns the oldest-added value with the highest priority
+	/**
+	 * Removes the oldest-added value with the highest priority from this queue,
+	 * and returns that value to the caller.
+	 *
+	 * @returns {Any}
+	 */
 	Pop() {
 		const maxKey = Math.max(Object.keys(this.store));
 		this.count--;
+
 		return this.store[maxKey].shift();
 	}
 
+	/**
+	 * Return total length of all items in this queue.
+	 *
+	 * @returns {Integer}
+	 */
 	length() {
 		return this.count;
 	}
 
+	/**
+	 * Return list of priorities associated with this queue.
+	 *
+	 * @returns {Array<String>}
+	 */
 	get_all_priorities() {
 		return Object.keys(this.store);
 	}
 
-	// iterates through all the queue elements in priority-then-FIFO order
+	/**
+	 * Iterates through all the queue elements in priority-then-FIFO order
+	 *
+	 * @param {function} callback
+	 */
 	forEach(callback) {
 		var keys = Object.keys(this.store).sort();
 
@@ -46,6 +74,13 @@ class PriorityQueue {
 		}
 	}
 
+	/**
+	* Change priority of an existing value to +newPriority+
+	*
+	* @param {Any} value The current value
+	* @param {Integer} newPriority
+	* @returns {Boolean} whether value was updated or not
+	*/
 	changePriority(value, newPriority) {
 		var foundItem = false;
 
@@ -55,9 +90,11 @@ class PriorityQueue {
 					bucket.splice(index, 1); // remove the item
 					this.add(value, newPriority);
 					foundItem = true;
+
 					return false; // early exit from forEach
 				}
 			});
+
 			if (foundItem) {
 				return false;
 			}
