@@ -1,4 +1,5 @@
-const { PriorityQueue } = require('../src/priority-queue');
+import PriorityQueue from '../src/priority-queue';
+
 
 describe('Priority Queue happy path unit tests', () => {
 

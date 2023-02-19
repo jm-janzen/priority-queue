@@ -1,8 +1,9 @@
 {
   "name": "priority-queue",
+  "type": "module",
   "version": "1.0.0",
   "description": "Store and manipulate lists of arbitrary items using accompanying numerical priority levels",
-  "main": "priority-queue.js",
+  "exports": "priority-queue.js",
   "scripts": {
     "lint": "eslint --fix -- src/* test/*",
     "test": "jest test/*"
@@ -18,6 +19,7 @@
   },
   "homepage": "https://gist.github.com/6570bfd7333f867664d1f71bad6e93b9",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "eslint": "^8.34.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",

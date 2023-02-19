@@ -2,7 +2,7 @@
  * Stores a list of items (arbitrary value) along with their numeric
  * priority values. Items with higher priorities are dequeued first
  */
-class PriorityQueue {
+export default class PriorityQueue {
 
 	/**
 	 * Initialises a queue with zero items
@@ -101,5 +101,3 @@ class PriorityQueue {
 		});
 	}
 }
-
-module.exports = { PriorityQueue };
