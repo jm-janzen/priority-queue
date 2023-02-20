@@ -94,8 +94,7 @@ export default class PriorityQueue {
 			.sort()
 			.reverse();
 		for(const entry of entries) {
-			const priority = entry[0];
-			const items = entry[1];
+			const [ _priority, items ] = entry;
 			for (const item of items) {
 				yield item;
 			}
