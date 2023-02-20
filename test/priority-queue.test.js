@@ -96,7 +96,8 @@ describe('Priority Queue happy path unit tests', () => {
 			'last',
 		];
 		const actualOrder = [];
-		for (const item of pq) {
+		for (const entry of pq) {
+			const [ _priority, item ] = entry;
 			actualOrder.push(item);
 		}
 		expect(actualOrder).toStrictEqual(expectedOrder);
