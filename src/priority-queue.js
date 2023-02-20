@@ -16,10 +16,16 @@ export default class PriorityQueue {
 	 * Adds a +value+ to this queue of the given +priority+. The higher
 	 * the number given, the higher the priority.
 	 *
+	 * @throws {TypeError} if +priority+ is not an Integer
+	 *
 	 * @param {Any} value
 	 * @param {Integer} priority
 	 */
 	add(value, priority) {
+		if (!Number.isInteger(priority)) {
+			throw new TypeError('Parameter priority must be an integer');
+		}
+
 		if (!this.store.has(priority)) {
 			this.store.set(priority, []);
 		}

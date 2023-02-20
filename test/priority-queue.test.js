@@ -103,3 +103,16 @@ describe('Priority Queue happy path unit tests', () => {
 	});
 
 });
+
+describe('Priority Queue exceptions', () => {
+	test('Throw on non-numeric priority', () => {
+		const pq = new PriorityQueue();
+
+		// When jest is expecting a function to throw, you need to pass it
+		// a reference to a function to run, or else it will resolve (throw)
+		// too early and fail before it gets to our test condition below!
+		const actual = () => pq.add('bad priority', '666');
+		const expected = TypeError('Parameter priority must be an integer');
+		expect(actual).toThrow(expected);
+	});
+});
