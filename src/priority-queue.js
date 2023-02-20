@@ -62,6 +62,8 @@ export default class PriorityQueue {
 	/**
 	 * Iterates through all the queue elements in priority-then-FIFO order
 	 *
+	 * @deprecated Don't encourage forEach use, use our for..of instead
+	 *
 	 * @param {function} callback
 	 */
 	forEach(callback) {
@@ -70,6 +72,26 @@ export default class PriorityQueue {
 		for (var a = keys.length; a > 0; a--) {
 			for (var b = 0; b < this.store.get(a).length; b++) {
 				callback(this.store.get(a)[b]);
+			}
+		}
+	}
+
+	/**
+	 * Iterates through all items in our queue, first by order of priority,
+	 * then by order items were pushed into a particular priority "bucket",
+	 * if more than 1 item exists (AKA FIFO order).
+	 *
+	 * @yields {Any} item
+	 */
+	*[Symbol.iterator]() {
+		const entries = [...this.store.entries()]
+			.sort()
+			.reverse();
+		for(const entry of entries) {
+			const priority = entry[0];
+			const items = entry[1];
+			for (const item of items) {
+				yield item;
 			}
 		}
 	}
