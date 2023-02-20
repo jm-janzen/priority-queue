@@ -6,7 +6,7 @@ describe('Priority Queue happy path unit tests', () => {
 	test('Initialised', () => {
 		const pq = new PriorityQueue();
 
-		expect(pq.store).toStrictEqual({});
+		expect(pq.store).toStrictEqual(new Map());
 		expect(pq.length()).toEqual(0);
 	});
 
@@ -16,14 +16,25 @@ describe('Priority Queue happy path unit tests', () => {
 		pq.add('meow', 1);
 		pq.Pop();
 
-		expect(pq.store).toStrictEqual({ '1': ['meow'] });
+		const actual = Object.fromEntries(pq.store);
+		const expectedStore = { 1: ['meow'] };
+		expect(actual).toStrictEqual(expectedStore);
 		expect(pq.length()).toEqual(1);
 		expect(pq.count).toEqual(1);
 	});
 
-	// NOTE Holding off on this one since bug prevents it
-	// from working as expected.
-	test.todo('Add and pop items (different priorities)');
+	test('Add and pop items (different priorities)', () => {
+		const pq = new PriorityQueue();
+		pq.add('meow', 1);
+		pq.add('meow', 2);
+		pq.Pop();
+
+		const actual = Object.fromEntries(pq.store);
+		const expectedStore = { 1: ['meow'], 2: [] };
+		expect(actual).toStrictEqual(expectedStore);
+		expect(pq.length()).toEqual(1);
+		expect(pq.count).toEqual(1);
+	});
 
 	test('Get all priorities (empty)', () => {
 		const pq = new PriorityQueue();
@@ -38,7 +49,7 @@ describe('Priority Queue happy path unit tests', () => {
 		pq.add('woof', 2);
 
 		const actual = pq.get_all_priorities();
-		expect(actual).toEqual([ '1', '2' ]);
+		expect(actual).toEqual([ 1, 2 ]);
 	});
 
 	test('Use custom iterator', () => {

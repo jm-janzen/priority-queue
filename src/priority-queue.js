@@ -8,7 +8,7 @@ export default class PriorityQueue {
 	 * Initialises a queue with zero items
 	 */
 	constructor() {
-		this.store = {}; // keys are priorities, values are arrays of elements
+		this.store = new Map(); // keys are priorities, values are arrays of elements
 		this.count = 0;
 	}
 
@@ -20,11 +20,11 @@ export default class PriorityQueue {
 	 * @param {Integer} priority
 	 */
 	add(value, priority) {
-		if (this.store[priority] == undefined) {
-			this.store[priority] = [];
+		if (!this.store.has(priority)) {
+			this.store.set(priority, []);
 		}
 
-		this.store[priority].push(value);
+		this.store.get(priority).push(value);
 		this.count++;
 	}
 
@@ -35,10 +35,10 @@ export default class PriorityQueue {
 	 * @returns {Any}
 	 */
 	Pop() {
-		const maxKey = Math.max(Object.keys(this.store));
+		const maxKey = Math.max(...this.get_all_priorities());
 		this.count--;
 
-		return this.store[maxKey].shift();
+		return this.store.get(maxKey).shift();
 	}
 
 	/**
@@ -56,7 +56,7 @@ export default class PriorityQueue {
 	 * @returns {Array<String>}
 	 */
 	get_all_priorities() {
-		return Object.keys(this.store);
+		return [...this.store.keys()];
 	}
 
 	/**
@@ -65,11 +65,11 @@ export default class PriorityQueue {
 	 * @param {function} callback
 	 */
 	forEach(callback) {
-		var keys = Object.keys(this.store).sort();
+		var keys = this.get_all_priorities().sort();
 
 		for (var a = keys.length; a > 0; a--) {
-			for (var b = 0; b < this.store[a].length; b++) {
-				callback(this.store[a][b]);
+			for (var b = 0; b < this.store.get(a).length; b++) {
+				callback(this.store.get(a)[b]);
 			}
 		}
 	}
