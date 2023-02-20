@@ -69,11 +69,37 @@ describe('Priority Queue happy path unit tests', () => {
 			'woof',
 			'bark',
 		];
-		pq.forEach(item => expect(item).toEqual(expectedOrder.shift()));
+		const actualOrder = [];
+		pq.forEach(item => actualOrder.push(item));
+		expect(actualOrder).toStrictEqual(expectedOrder);
 	});
 
-	// NOTE Holding off since bug in custom implementation of forEach prevents
-	// the method from working with gaps in priority, or priorities less than 0
-	test.todo('Use custom iterator (with gaps)');
+	test('Use custom iterator (for..of)', () => {
+		const pq = new PriorityQueue();
+		pq.add('meow', 2);
+		pq.add('woof', 0);
+		pq.add('bark', 1);
+		pq.add('hoot #1', 3);
+		pq.add('last', -666);
+		pq.add('hoot #2', 3);
+		pq.add('first', 777);
+		pq.add('hoot #3', 3);
+
+		const expectedOrder = [
+			'first',
+			'hoot #1',
+			'hoot #2',
+			'hoot #3',
+			'meow',
+			'bark',
+			'woof',
+			'last',
+		];
+		const actualOrder = [];
+		for (const item of pq) {
+			actualOrder.push(item);
+		}
+		expect(actualOrder).toStrictEqual(expectedOrder);
+	});
 
 });
