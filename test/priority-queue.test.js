@@ -116,6 +116,29 @@ describe('Priority Queue happy path unit tests', () => {
 		expect(pq.peek(0)).toStrictEqual(['cats']);
 	});
 
+	test('Change priority of an item (multiple matching values)', () => {
+		const pq = new PriorityQueue();
+
+		expect(pq.peek(777)).toStrictEqual([]);
+
+		pq.add('cats', 777);
+		pq.add('cats', 777);
+		expect(pq.peek(777)).toStrictEqual(['cats', 'cats']);
+
+		let priorityChanged;
+		priorityChanged = pq.changePriority('cats', 0);
+		expect(priorityChanged).toBe(true);
+
+		priorityChanged = pq.changePriority('cats', 0);
+		expect(priorityChanged).toBe(true);
+
+		priorityChanged = pq.changePriority('cats', 0);
+		expect(priorityChanged).toBe(false); // No more cats!
+
+		expect(pq.peek(777)).toStrictEqual([]);
+		expect(pq.peek(0)).toStrictEqual(['cats', 'cats']);
+	});
+
 });
 
 describe('Priority Queue exceptions', () => {
