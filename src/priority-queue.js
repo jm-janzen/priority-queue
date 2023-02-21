@@ -45,7 +45,7 @@ export default class PriorityQueue {
 	 *
 	 * @returns {Any}
 	 */
-	Pop() {
+	pop() {
 		const maxKey = Math.max(...this.get_all_priorities());
 		this.count--;
 

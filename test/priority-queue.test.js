@@ -14,7 +14,7 @@ describe('Priority Queue happy path unit tests', () => {
 		const pq = new PriorityQueue();
 		pq.add('meow', 1);
 		pq.add('meow', 1);
-		pq.Pop();
+		pq.pop();
 
 		const actual = Object.fromEntries(pq.store);
 		const expectedStore = { 1: ['meow'] };
@@ -27,7 +27,7 @@ describe('Priority Queue happy path unit tests', () => {
 		const pq = new PriorityQueue();
 		pq.add('meow', 1);
 		pq.add('meow', 2);
-		pq.Pop();
+		pq.pop();
 
 		const actual = Object.fromEntries(pq.store);
 		const expectedStore = { 1: ['meow'], 2: [] };
