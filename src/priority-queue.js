@@ -14,6 +14,15 @@ export default class PriorityQueue {
 	}
 
 	/**
+	 * Return total length of all items in this queue.
+	 *
+	 * @returns {Integer}
+	 */
+	get length() {
+		return this.count;
+	}
+
+	/**
 	 * Adds a +value+ to this queue of the given +priority+. The higher
 	 * the number given, the higher the priority.
 	 *
@@ -50,15 +59,6 @@ export default class PriorityQueue {
 		this.count--;
 
 		return this.store.get(maxKey).shift();
-	}
-
-	/**
-	 * Return total length of all items in this queue.
-	 *
-	 * @returns {Integer}
-	 */
-	get length() {
-		return this.count;
 	}
 
 	/**
