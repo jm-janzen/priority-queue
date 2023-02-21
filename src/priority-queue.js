@@ -62,6 +62,16 @@ export default class PriorityQueue {
 	}
 
 	/**
+	 * Return value(s) at given +priority+ or empty array
+	 *
+	 * @param {Integer} priority
+	 * @returns {Array<Any>}
+	 */
+	peek(priority) {
+		return this.store.get(priority) || [];
+	}
+
+	/**
 	 * Return list of priorities associated with this queue.
 	 *
 	 * @returns {Array<String>}
