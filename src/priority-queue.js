@@ -46,7 +46,7 @@ export default class PriorityQueue {
 	 * @returns {Any}
 	 */
 	pop() {
-		const maxKey = Math.max(...this.get_all_priorities());
+		const maxKey = Math.max(...this.getPriorities());
 		this.count--;
 
 		return this.store.get(maxKey).shift();
@@ -76,7 +76,7 @@ export default class PriorityQueue {
 	 *
 	 * @returns {Array<String>}
 	 */
-	get_all_priorities() {
+	getPriorities() {
 		return [...this.store.keys()];
 	}
 
@@ -88,7 +88,7 @@ export default class PriorityQueue {
 	 * @param {function} callback
 	 */
 	forEach(callback) {
-		var keys = this.get_all_priorities().sort();
+		var keys = this.getPriorities().sort();
 
 		for (var a = keys.length; a > 0; a--) {
 			for (var b = 0; b < this.store.get(a).length; b++) {

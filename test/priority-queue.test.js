@@ -39,7 +39,7 @@ describe('Priority Queue happy path unit tests', () => {
 	test('Get all priorities (empty)', () => {
 		const pq = new PriorityQueue();
 
-		const actual = pq.get_all_priorities();
+		const actual = pq.getPriorities();
 		expect(actual).toEqual([]);
 	});
 
@@ -48,7 +48,7 @@ describe('Priority Queue happy path unit tests', () => {
 		pq.add('meow', 1);
 		pq.add('woof', 2);
 
-		const actual = pq.get_all_priorities();
+		const actual = pq.getPriorities();
 		expect(actual).toEqual([ 1, 2 ]);
 	});
 
