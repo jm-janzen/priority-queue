@@ -126,14 +126,10 @@ export default class PriorityQueue {
 	* @returns {Boolean} whether value was updated or not
 	*/
 	changePriority(value, newPriority) {
-		let foundItem = false;
-
 		for(const [ priority, item ] of this) {
 			if (item !== value || priority == newPriority) {
 				continue;
 			}
-
-			foundItem = true;
 
 			const matchingIndex = this.store
 				.get(priority)
@@ -143,8 +139,10 @@ export default class PriorityQueue {
 				.splice(matchingIndex, 1);
 
 			this.add(value, newPriority);
+
+			return true;
 		}
 
-		return foundItem;
+		return false;
 	}
 }
