@@ -129,7 +129,7 @@ export default class PriorityQueue {
 		let foundItem = false;
 
 		for(const [ priority, item ] of this) {
-			if (item !== value) {
+			if (item !== value || priority == newPriority) {
 				continue;
 			}
 
