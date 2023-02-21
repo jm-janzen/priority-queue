@@ -1,4 +1,4 @@
-import PriorityQueue from '../src/priority-queue';
+import PriorityQueue from '../src/priority-queue-rewrite';
 
 
 describe('Priority Queue happy path unit tests', () => {
