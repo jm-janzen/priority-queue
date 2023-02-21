@@ -106,4 +106,35 @@ export default class PriorityQueue {
 		}
 	}
 
+	/**
+	* Change priority of an existing value to +newPriority+
+	*
+	* NOTE This will only change the priority of the _first_ matching value
+	*
+	* @param {Any} value The current value
+	* @param {Integer} newPriority
+	* @returns {Boolean} whether value was updated or not
+	*/
+	changePriority(value, newPriority) {
+		let foundItem = false;
+
+		for(const [ priority, item ] of this) {
+			if (item !== value) {
+				continue;
+			}
+
+			foundItem = true;
+
+			const matchingIndex = this.store
+				.get(priority)
+				.findIndex(item => item === value);
+			this.store
+				.get(priority)
+				.splice(matchingIndex, 1);
+
+			this.add(value, newPriority);
+		}
+
+		return foundItem;
+	}
 }
