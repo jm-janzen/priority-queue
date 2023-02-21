@@ -7,7 +7,7 @@ describe('Priority Queue happy path unit tests', () => {
 		const pq = new PriorityQueue();
 
 		expect(pq.store).toStrictEqual(new Map());
-		expect(pq.length()).toEqual(0);
+		expect(pq.length).toEqual(0);
 	});
 
 	test('Add and pop items (same priorities)', () => {
@@ -19,7 +19,7 @@ describe('Priority Queue happy path unit tests', () => {
 		const actual = Object.fromEntries(pq.store);
 		const expectedStore = { 1: ['meow'] };
 		expect(actual).toStrictEqual(expectedStore);
-		expect(pq.length()).toEqual(1);
+		expect(pq.length).toEqual(1);
 		expect(pq.count).toEqual(1);
 	});
 
@@ -32,7 +32,7 @@ describe('Priority Queue happy path unit tests', () => {
 		const actual = Object.fromEntries(pq.store);
 		const expectedStore = { 1: ['meow'], 2: [] };
 		expect(actual).toStrictEqual(expectedStore);
-		expect(pq.length()).toEqual(1);
+		expect(pq.length).toEqual(1);
 		expect(pq.count).toEqual(1);
 	});
 

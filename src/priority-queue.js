@@ -57,7 +57,7 @@ export default class PriorityQueue {
 	 *
 	 * @returns {Integer}
 	 */
-	length() {
+	get length() {
 		return this.count;
 	}
 
