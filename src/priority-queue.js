@@ -9,7 +9,7 @@ export default class PriorityQueue {
 	 */
 	constructor() {
 		this.store = new Map(); // keys are priorities, values are arrays of elements
-		this.count = 0;
+		this._count = 0;
 		this._supportedTypes = [ 'string', 'number', 'boolean', 'undefined' ];
 	}
 
@@ -19,7 +19,7 @@ export default class PriorityQueue {
 	 * @returns {Integer}
 	 */
 	get length() {
-		return this.count;
+		return this._count;
 	}
 
 	/**
@@ -45,7 +45,7 @@ export default class PriorityQueue {
 		}
 
 		this.store.get(priority).push(value);
-		this.count++;
+		this._count++;
 	}
 
 	/**
@@ -56,7 +56,7 @@ export default class PriorityQueue {
 	 */
 	pop() {
 		const maxKey = Math.max(...this.getPriorities());
-		this.count--;
+		this._count--;
 
 		return this.store.get(maxKey).shift();
 	}

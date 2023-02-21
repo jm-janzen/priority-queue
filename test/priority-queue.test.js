@@ -20,7 +20,6 @@ describe('Priority Queue happy path unit tests', () => {
 		const expectedStore = { 1: ['meow'] };
 		expect(actual).toStrictEqual(expectedStore);
 		expect(pq.length).toEqual(1);
-		expect(pq.count).toEqual(1);
 	});
 
 	test('Add and pop items (different priorities)', () => {
@@ -33,7 +32,6 @@ describe('Priority Queue happy path unit tests', () => {
 		const expectedStore = { 1: ['meow'], 2: [] };
 		expect(actual).toStrictEqual(expectedStore);
 		expect(pq.length).toEqual(1);
-		expect(pq.count).toEqual(1);
 	});
 
 	test('Get all priorities (empty)', () => {
