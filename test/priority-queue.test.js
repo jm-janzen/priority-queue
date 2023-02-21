@@ -68,7 +68,7 @@ describe('Priority Queue happy path unit tests', () => {
 			'bark',
 		];
 		const actualOrder = [];
-		pq.forEach(item => actualOrder.push(item));
+		[...pq].map((entry) => actualOrder.push(entry[1]));
 		expect(actualOrder).toStrictEqual(expectedOrder);
 	});
 
