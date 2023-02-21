@@ -106,30 +106,4 @@ export default class PriorityQueue {
 		}
 	}
 
-	/**
-	* Change priority of an existing value to +newPriority+
-	*
-	* @param {Any} value The current value
-	* @param {Integer} newPriority
-	* @returns {Boolean} whether value was updated or not
-	*/
-	changePriority(value, newPriority) {
-		var foundItem = false;
-
-		this.store.forEach(function (bucket) {
-			bucket.forEach(function (item, index) {
-				if (item === value) {
-					bucket.splice(index, 1); // remove the item
-					this.add(value, newPriority);
-					foundItem = true;
-
-					return false; // early exit from forEach
-				}
-			});
-
-			if (foundItem) {
-				return false;
-			}
-		});
-	}
 }
